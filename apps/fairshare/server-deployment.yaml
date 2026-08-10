@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: fairshare-server
-          image: ghcr.io/Taku10/fairshare-server:1.0.0
+          image: ghcr.io/Taku10/fairshare-server:latest
 
           ports:
             - containerPort: 3000
