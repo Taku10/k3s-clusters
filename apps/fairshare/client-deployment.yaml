@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fairshare-client
+  namespace: nonprod
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: fairshare-client
+
+  template:
+    metadata:
+      labels:
+        app: fairshare-client
+
+    spec:
+      containers:
+        - name: fairshare-client
+          image: ghcr.io/Taku10/fairshare-client:1.0.0
+
+          ports:
+            - containerPort: 80
