@@ -1,5 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
+
 metadata:
   name: fairshare-server
   namespace: nonprod
@@ -20,14 +21,20 @@ spec:
       containers:
         - name: fairshare-server
           image: ghcr.io/taku10/fairshare-server:latest
+          imagePullPolicy: Always
 
           ports:
             - containerPort: 5000
 
           env:
             - name: NODE_ENV
-              value: "production"
+              value: "nonprod"
+
             - name: PORT
               value: "5000"
+
             - name: MONGO_URI
-              value: "mongodb://mongo:27017/fairshare"
+              valueFrom:
+                secretKeyRef:
+                  name: fairshare-secrets
+                  key: MONGO_URI
