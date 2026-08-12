@@ -19,11 +19,15 @@ spec:
     spec:
       containers:
         - name: fairshare-server
-          image: ghcr.io/Taku10/fairshare-server:latest
+          image: ghcr.io/taku10/fairshare-server:latest
 
           ports:
-            - containerPort: 3000
+            - containerPort: 5000
 
           env:
             - name: NODE_ENV
               value: "production"
+            - name: PORT
+              value: "5000"
+            - name: MONGO_URI
+              value: "mongodb://mongo:27017/fairshare"
